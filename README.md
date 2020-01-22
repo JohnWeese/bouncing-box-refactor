@@ -87,8 +87,13 @@ Below is an example of refactoring a "core logic" function. Consider the followi
 ```js
 // core logic
 function greet() {
+  // ask for name
   var name = prompt("what is your name?");
+
+  // say hello
   console.log("hello " + name);
+  
+  // say goodbye
   console.log("goodbye " + name);
 } 
 ```
@@ -98,8 +103,13 @@ Below is an example of how it may be refactored:
 ```js
 // core logic
 function greet() {
+  // ask for name
   var name = getStrangersName();
-  sayHello(name);
+
+  // say hello
+  sayHello(name);  
+  
+  // say goodbye
   sayGoodbye(name);
 }
 
