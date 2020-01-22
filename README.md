@@ -9,7 +9,7 @@
 
 # TODOs
 
-### _Remember to use control+c and control+v to copy and paste_
+### _Remember to use `control+c` and `control+v` to copy and paste_
 
 ### TODO 1) Create your files
 - Sign into cloud9
