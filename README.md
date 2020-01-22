@@ -60,7 +60,7 @@ For both the `update` function and the `handleBoxClick` function, follow the ste
 
 ### TODO 5) Reflection:
 Inside the `reflections.txt` file answer the following questions:
-- In your opinion, what are the pros of separating files? What are the cons?
-- In your opinion, what are the pros of refactoring your code into separate functions? What are the cons?
+- In your opinion, what are the pros of refactoring your HTML, CSS, and JavaScript into separate files? What are the cons?
+- In your opinion, what are the pros of refactoring your JavaScript code into separate functions? What are the cons?
 
 
