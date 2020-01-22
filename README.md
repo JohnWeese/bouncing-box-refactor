@@ -80,20 +80,9 @@ Hint: your comment headers should look something like this:
 /////////////////////////////////////////////////
 ```
 
-## TODO 4) Refactor `update`
+## Refactoring Core Logic Example (no coding for this step)
 
-_All new functions should be declared in the `Helper Functions` section_
-
-#### Step 1: Identify the main actions the function performs.
-#### Step 2: For each action:
-  - group together/separate code by distinct actions performed
-  - insert a `//comment` describing the action performed by the sequence of code. Sequences that involve `if` statements can begin with `// check for X` or `// did X occur?`
-  - declare a new function in the `"Helper Functions"` section with a name that describes the action. It may not need any parameters
-  - copy and paste the sequence of code (not the comment) into your new function's `{ Code Block }`
-  - replace old code with a call to your new function
-#### Step 3: Can any repeated code be made more abstract/modular?
-
-For example, consider the following code
+Below is an example of refactoring a "core logic" function. Consider the following code:
 
 ```js
 // core logic
@@ -126,8 +115,20 @@ function sayHello(name) {
 function sayGoodbye(name) {
   console.log("goodbye " + name);
 }
-
 ```
+
+## TODO 4) Refactor `update`
+
+_All new functions should be declared in the `Helper Functions` section_
+
+#### Step 1: Identify the main actions the function performs.
+#### Step 2: For each action:
+  - group together/separate code by distinct actions performed
+  - insert a `//comment` describing the action performed by the sequence of code. Sequences that involve `if` statements can begin with `// check for X` or `// did X occur?`
+  - declare a new function in the `"Helper Functions"` section with a name that describes the action. It may not need any parameters
+  - copy and paste the sequence of code (not the comment) into your new function's `{ Code Block }`
+  - replace old code with a call to your new function
+#### Step 3: Can any repeated code be made more abstract/modular?
 
 ## TODO 5) Refactor `handleBoxClick`
 
