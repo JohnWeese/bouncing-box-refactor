@@ -80,20 +80,60 @@ Hint: your comment headers should look something like this:
 /////////////////////////////////////////////////
 ```
 
-## TODO 4) Refactor `Core Logic`
+## TODO 4) Refactor `update`
 
-For both the `update` function and the `handleBoxClick` function, follow the steps below. All new functions should be declared in the `Helper Functions` section:
+_All new functions should be declared in the `Helper Functions` section_
 
-#### 1. Identify the main actions the function performs.
-#### 2. For each action:
+#### Step 1: Identify the main actions the function performs.
+#### Step 2: For each action:
   - group together/separate code by distinct actions performed
   - insert a `//comment` describing the action performed by the sequence of code. Sequences that involve `if` statements can begin with `// check for X` or `// did X occur?`
   - declare a new function in the `"Helper Functions"` section with a name that describes the action. It may not need any parameters
   - copy and paste the sequence of code (not the comment) into your new function's `{ Code Block }`
   - replace old code with a call to your new function
-#### 3. Can any repeated code be made more abstract/modular?
+#### Step 3: Can any repeated code be made more abstract/modular?
 
-## TODO 5) Reflection:
+For example, consider the following code
+
+```js
+// core logic
+function greet() {
+  var name = prompt("what is your name?");
+  console.log("hello " + name);
+  console.log("goodbye " + name);
+} 
+```
+
+Below is an example of how it may be refactored:
+
+```js
+// core logic
+function greet() {
+  var name = getStrangersName();
+  sayHello(name);
+  sayGoodbye(name);
+}
+
+// helper functions
+function getStrangersName() {
+  return prompt("what is your name?");
+}
+
+function sayHello(name) {
+  console.log("hello " + name);
+}
+
+function sayGoodbye(name) {
+  console.log("goodbye " + name);
+}
+
+```
+
+## TODO 5) Refactor `handleBoxClick`
+
+Follow the steps outlined above in TODO 4 for `handleBoxClick`
+
+## TODO 6) Reflection:
 Inside the `reflections.txt` file answer the following questions:
 - In your opinion, what are the pros of refactoring your HTML, CSS, and JavaScript into separate files? What are the cons?
 - In your opinion, what are the pros of refactoring your JavaScript code into separate functions? What are the cons?
