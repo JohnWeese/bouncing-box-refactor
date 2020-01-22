@@ -1,4 +1,4 @@
-# Refactoring Takeaways
+# Refactoring Principles
 
 ### Separation of Concerns
 - Every file/module/function should perform one task and one task only.
