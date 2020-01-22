@@ -11,7 +11,7 @@
 
 ### _Remember to use `control+c` and `control+v` to copy and paste_
 
-## TODO 1) Create your files
+## TODO 1) Create your file structure
 - Sign into cloud9
 - Create a new folder with the name: `bouncing-box-refactor`
 - Create 3 files in that folder: `index.html`, `index.css`, `index.js`
