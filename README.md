@@ -12,7 +12,7 @@
 ### _Remember to use `control+c` and `control+v` to copy and paste_
 
 ## TODO 1) Create your file structure
-- Sign into cloud9
+- Sign into / open your IDE of choice (cloud9, VS Code, sublime, etc...)
 - Create a new folder with the name: `bouncing-box-refactor`
 - Create 3 files in that folder: `index.html`, `index.css`, `index.js`
 - Copy the code from bouncing box jsbin (see below) into `index.html`
