@@ -15,13 +15,15 @@
 
 This project will focus on "refactoring" an old project: Bouncing Box.
 
-Refactoring is the process of internally restructuring existing code without changing its external behavior
+> Refactoring is the process of internally restructuring existing code without changing its external behavior
 
 This project will focus on refactoring for 2 purposes: Separation of Concerns and Abstraction.
 
 ### Separation of Concerns Example
 
-The main principle of separation of concerns is: Every file/module/function should perform one task and one task only.
+The main principle of separation of concerns is
+
+> Every file/module/function should perform one task and one task only.
 
 Often, files/functions/modules serve to execute multiple sub-tasks. Consider the following function:
 
@@ -76,7 +78,7 @@ In addition, comments have been added to clarify the purpose of each subtask and
 
 ### Abstraction Example
 
-Abstraction is the process of turning something specific (hard-coded) into something generic (reusable)
+> Abstraction is the process of turning something specific (hard-coded) into something generic (reusable)
 
 Repetitive code presents an opportunity to refactor for abstraction. Abstraction helps us to follow the D.R.Y. principle (don't repeat yourself).
 
