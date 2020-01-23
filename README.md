@@ -131,7 +131,7 @@ function sayGoodbye(name) {
 
 _All new functions should be declared in the `Helper Functions` section_
 
-#### Step 1: Identify the main actions the function performs.
+#### Step 1: Identify the main actions the `update` function performs.
 #### Step 2: For each action:
   - group together/separate code by distinct actions performed
   - insert a `//comment` describing the action performed by the sequence of code. Sequences that involve `if` statements can begin with `// check for X` or `// did X occur?`
