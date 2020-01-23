@@ -127,11 +127,11 @@ Our goal for this first TODO is to get this code into our cloud9 workspace. **NO
 
 #### Step 1: Create your folder / files
 
-Create a new folder with the name: `bouncing-box-refactor`
+Right click on the main folder in your workspace and create a new folder with the name: `bouncing-box-refactor`
 
 <img src="https://github.com/OperationSpark/bouncing-box-refactor/blob/master/img/new-folder.png?raw=true" height="250">
 
-Create 3 files in that folder: `index.html`, `index.css`, `index.js`
+Right click on this new folder and create 3 files in that folder: `index.html`, `index.css`, `index.js`
 
 <img src="https://github.com/OperationSpark/bouncing-box-refactor/blob/master/img/new-file.png?raw=true" height="250">
 
