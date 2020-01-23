@@ -144,13 +144,7 @@ At this point your file structure should look like this:
 
 ## TODO 2) Refactor the file structure
 
-#### Step 1: Use your google search powers to figure out how to:
-1. `add an external css file to an html file`
-2. `add a javascript file to an html file`
-
-Hint: include "w3schools" in your search query
-
-#### Step 2: move the CSS:
+#### Step 1: move the CSS:
 - Copy and paste the CSS within the `<style>` tags from `index.html` to `index.css`
 - Link the index.css file to the `index.html`file within the `<head>` tags
 
@@ -162,7 +156,7 @@ Hint: the code you are copy-pasting should look like the code below:
 }
 ```
 
-#### Step 3: move the JavaScript
+#### Step 2: move the JavaScript
 - Copy and paste the JavaScript within the `<script>` tags from `index.html` to `index.js`
 - Link the index.js file to the `index.html` file within the `<head>` tags
 
@@ -176,38 +170,65 @@ $(document).ready(function(){
 });
 ```
 
+#### Step 3: Link `index.js` and `index.css` to `index.html`
+
+At this point, your code should be separated into 3 files. If you were to run your program (in cloud9, right-click on `index.html` and select **Preview**), you would notice that it doesn't work! 
+
+That's because `index.html` is only running the code that it has in its own file. However, we can tell it to load the code written in `index.css` and `index.js` by adding a few tags. 
+
+Use your google search powers to look up the following:
+1. `HTML <link> Tag`
+2. `HTML <script> src Attribute`
+
+Hint: include "w3schools" in your search query
+
 #### Step 4: Reflection questions:
 Create a new file called `reflections.txt`. Inside, answer the following questions:
-- What happens if you load the `index.js` file before the jquery file?
 - How is the jQuery file being loaded into this project: direct download or Content Delivery Network (CDN)?
+- If you load the `index.js` file before the jquery file our program doesn't work. Why? Open the preview in a new tab and look at the console to help you find out why.
 
 ## TODO 3) Refactor `index.js` comment headers
-- Rename the first comment header: `"Initialization"`
-- Rename the second comment header: `"Core Logic"`
-- Copy the comment header and add a third comment header at the bottom: `"Helper Functions"`
-- move any code that is not below the correct header (hint: variable declarations should all be in `"Initialization"`)
 
-Hint: your comment headers should look something like this:
+Comment headers are incredibly userful for organizing the various components of our program. 
+
+For this project we want the overall structure of `index.js` to look like this:
 
 ```js
-/////////////////////////////////////////////////
-////////////// INITIALIZATION ///////////////////
-/////////////////////////////////////////////////
+$(document).ready(function() {
 
-/////////////////////////////////////////////////
-//////////////// CORE LOGIC /////////////////////
-/////////////////////////////////////////////////
+  /////////////////////////////////////////////////
+  ////////////// INITIALIZATION ///////////////////
+  /////////////////////////////////////////////////
 
-/////////////////////////////////////////////////
-////////////// HELPER FUNCTIONS /////////////////
-/////////////////////////////////////////////////
+  /* variables and other one-time set up code for the program */
+
+  /////////////////////////////////////////////////
+  //////////////// CORE LOGIC /////////////////////
+  /////////////////////////////////////////////////
+
+  /* main logic of the program: the update / handleBoxClick functions */
+
+  /////////////////////////////////////////////////
+  ////////////// HELPER FUNCTIONS /////////////////
+  /////////////////////////////////////////////////
+
+  /* functions for executing sub-tasks of the core logic */
+
+});
 ```
 
-## TODO 4) Refactor `update`
+#### Step 1: Rename the first comment header: `"Initialization"`
+#### Step 2: Rename the second comment header: `"Core Logic"`
+#### Step 3: Copy the comment header and add a third comment header at the bottom: `"Helper Functions"`
+#### Step 4: Move any code that is not below the correct header (hint: variable declarations should all be in `"Initialization"`)
 
-_All new functions should be declared in the `Helper Functions` section_
+## TODO 4) Refactor `update` for separation of concerns
 
-(Look at the top of this document for an example of the process outlined below)
+In this step we will create our first helper functions for the function `update`. Each helper function will implement a sub-task that the `update` function will call in sequence. 
+
+Look at the top of this document for an example of the process outlined below.
+
+_NOTE: All new functions should be declared in the `Helper Functions` section_
 
 #### Step 1: Identify the main sub-tasks that the `update` function performs.
 
@@ -217,9 +238,9 @@ _All new functions should be declared in the `Helper Functions` section_
   3. identify all code for performing the sub-task and copy-paste it into the new helper function
   4. replace the old code with a call to your new helper function
   
-#### Step 3: Check to see if any repeated code be made more abstract/modular?
+#### Challenge: Can any repeated code be made more abstract/modular?
 
-## TODO 5) Refactor `handleBoxClick`
+## TODO 5) Refactor `handleBoxClick` for separation of concerns
 
 Follow the steps outlined above in TODO 4 for `handleBoxClick`
 
