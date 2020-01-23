@@ -1,10 +1,17 @@
 # Refactoring Principles
 
+This project will focus on "refactoring" an old project: Bouncing Box.
+
+Refactoring is the process of internally restructuring existing code without changing its external behavior
+
+This project will focus on refactoring for 2 purposes: Separation of Concerns and Abstraction.
+
 ### Separation of Concerns
 - Every file/module/function should perform one task and one task only.
-- If a file/module/function serves multiple purposes, break it into separate files/modules/functions (when appropriate)
+- If a file/module/function serves multiple purposes, break it into separate files/modules/functions
+- A file/module/function can serve the unique purpose of pulling together other files/modules/functions
 
-### DRY: Don't Repeat Yourself
+### Abstraction
 - Repetitive code presents an opportunity to refactor for abstraction
 
 # TODOs
@@ -80,23 +87,30 @@ Hint: your comment headers should look something like this:
 /////////////////////////////////////////////////
 ```
 
-## Refactoring Core Logic Example (no coding for this step)
+## Refactoring a function for separation of concerns (no coding for this step)
 
-Below is an example of refactoring a "core logic" function. Consider the following code:
+The main principles of separation of concerns are:
+- Every file/module/function should perform one task and one task only.
+- If a file/module/function serves multiple purposes, break it into separate files/modules/functions
+- A file/module/function can serve the unique purpose of pulling together other files/modules/functions
+
+Below is an example of refactoring a function for separation of concerns. Consider the following function:
 
 ```js
 // core logic
 function greet() {
-  // ask for name
   var name = prompt("what is your name?");
-
-  // say hello
   console.log("hello " + name);
-  
-  // say goodbye
   console.log("goodbye " + name);
 } 
 ```
+
+Notice how the `greet` function has 3 distinct sub-tasks that it performs: 
+1. asking for a name
+2. saying hello
+3. saying goodbye
+
+To achieve separation of concerns with this `greet` function, the _implementation_ for each sub-task (the code for _how_ to actually perform a task) should be isolated from one another. 
 
 Below is an example of how it may be refactored:
 
@@ -127,18 +141,23 @@ function sayGoodbye(name) {
 }
 ```
 
+Notice now that the `greet` function simply invokes/calls the other three functions. It's main purpose is to tie together the other functions while the other functions can focus on performing their one task.
+
+In addition, comments have been added to clarify the purpose of each subtask and to organize the `core logic` from the `helper functions`.
+
 ## TODO 4) Refactor `update`
 
 _All new functions should be declared in the `Helper Functions` section_
 
-#### Step 1: Identify the main actions the `update` function performs.
-#### Step 2: For each action:
-  - group together/separate code by distinct actions performed
-  - insert a `//comment` describing the action performed by the sequence of code. Sequences that involve `if` statements can begin with `// check for X` or `// did X occur?`
-  - declare a new function in the `"Helper Functions"` section with a name that describes the action. It may not need any parameters
-  - copy and paste the sequence of code (not the comment) into your new function's `{ Code Block }`
-  - replace old code with a call to your new function
-#### Step 3: Can any repeated code be made more abstract/modular?
+#### Step 1: Identify the main sub-tasks that the `update` function performs.
+
+#### Step 2: For each sub-task:
+  1. declare a new function in the `"Helper Functions"` section with a name that describes the sub-task. Note: it is likely that it may not need any parameters
+  2. insert a `/* multi-line comment */` above your new helper function that describes the sub-task performed.
+  3. identify all code for performing the sub-task and copy-paste it into the new helper function
+  4. replace the old code with a call to your new helper function
+  
+#### Step 3: Check to see if any repeated code be made more abstract/modular?
 
 ## TODO 5) Refactor `handleBoxClick`
 
