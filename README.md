@@ -41,7 +41,7 @@ Notice how the `greet` function has 3 distinct sub-tasks that it performs:
 2. saying hello with the name
 3. saying goodbye with the name
 
-To achieve separation of concerns with this `greet` function, the _implementation_ for each sub-task (the code for _how_ to actually perform a task) should be isolated from one another. 
+To achieve separation of concerns with this `greet` function, the _implementation_ for each sub-task (the code for _how_ to actually perform a task) should be isolated from one another in the form of _helper functions_
 
 Below is an example of how it may be refactored:
 
