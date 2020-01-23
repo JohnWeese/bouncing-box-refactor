@@ -119,17 +119,17 @@ First, open up the bouncing box code linked below:
 
 [Bouncing Box jsbin: Right Click --> Open Link in New Tab](https://jsbin.com/goyuhod/edit?html,output)
 
-Our goal for this first step is to get this code into our cloud9 workspace. **NOTE: DO NOT USE YOUR OLD BOUNCING-BOX PROJECT**
+Our goal for this first TODO is to get this code into our cloud9 workspace. **NOTE: DO NOT USE YOUR OLD BOUNCING-BOX PROJECT**
 
 #### Step 1: Create your folder / files
 
 Create a new folder with the name: `bouncing-box-refactor`
 
-<img src="https://github.com/OperationSpark/bouncing-box-refactor/blob/master/img/new-folder.png?raw=true" height="200">
+<img src="https://github.com/OperationSpark/bouncing-box-refactor/blob/master/img/new-folder.png?raw=true" height="250">
 
 Create 3 files in that folder: `index.html`, `index.css`, `index.js`
 
-<img src="https://github.com/OperationSpark/bouncing-box-refactor/blob/master/img/new-file.png?raw=true" height="200">
+<img src="https://github.com/OperationSpark/bouncing-box-refactor/blob/master/img/new-file.png?raw=true" height="250">
 
 At this point your file structure should look like this:
 
@@ -137,8 +137,6 @@ At this point your file structure should look like this:
 
 #### Step 2: Copy code from jsbin into `index.html`
 - Copy the code from the bouncing box jsbin into `index.html`
-
-
 
 ## TODO 2) Refactor the file structure
 
