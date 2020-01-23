@@ -76,6 +76,8 @@ Notice now that the `greet` function simply invokes/calls the other three functi
 
 In addition, comments have been added to clarify the purpose of each subtask and to organize the `core logic` from the `helper functions`.
 
+For a program this small, this solution may seem like overkill. However, as our programs grow organizing code into `core logic` and `helper functions` will go a long way.
+
 ### Abstraction Example
 
 > Abstraction is the process of turning something specific (hard-coded) into something generic (reusable)
