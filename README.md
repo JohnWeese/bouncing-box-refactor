@@ -72,11 +72,11 @@ function sayGoodbye(name) {
 }
 ```
 
-Notice now that the `greet` function simply invokes/calls the other three functions. It's main purpose is to tie together the other functions while the other functions can focus on performing their one task.
+Notice now that the `greet` function simply invokes/calls the other three functions. The main purpose of `greet` is to lay out the high-level logic of the program while the helper functions implementing their one task.
 
 In addition, comments have been added to clarify the purpose of each subtask and to organize the `core logic` from the `helper functions`.
 
-For a program this small, this solution may seem like overkill. However, as our programs grow organizing code into `core logic` and `helper functions` will go a long way.
+Separation of concerns is a principle to program by, not a rule that must be followed. For a program this small, this solution may seem like overkill. However, as our programs grow, organizing code into `core logic` and `helper functions` will keep the logic flowing smoothly, improve the the readability of the program, and simplify the debugging process.
 
 ### Abstraction Example
 
@@ -89,7 +89,7 @@ To refactor repetitive code for abstraction, you can follow these 3 steps:
 2. identify the changing expressions/data (if any) and turn those expressions/data into parameters
 3. replace repetitive code with function calls
 
-Below is an example of refactoring for abstraction. Consider the following code which rolls dice of different sizes:
+Below is an example of refactoring for abstraction. Consider the following code which simulates rolling dice of different sizes:
 
 ```js
 var roll1 = Math.ceil(Math.random() * 6);
@@ -97,11 +97,19 @@ var roll2 = Math.ceil(Math.random() * 10);
 var roll3 = Math.ceil(Math.random() * 20);
 ```
 
-Notice that each time I roll the dice I am using the `Math.ceil()` and `Math.random()` functions, the `*` operator and a number value. These statements can be turned into a new function declaration.
+Each time I roll the dice I am using the `Math.ceil()` and `Math.random()` functions, the `*` operator and a number value. These statements can be turned into a new function declaration.
 
-However, the number value changes each time so that value must be replaced with a parameter.
+```js
+function rollDice() {
+  return Math.ceil(Math.random() * 6); // the 6 should be a parameter, not hard-coded
+}
 
-Below is how this code may be refactored for abstraction:
+var roll1 = rollDice(6);
+var roll2 = rollDice(10);
+var roll3 = rollDice(20);
+```
+
+However, we want the number value `6` to change each time we call the function. That value must be replaced with a parameter:
 
 ```js
 function rollDice(sides) {
