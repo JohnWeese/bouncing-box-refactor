@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<title>Bouncing Box</title>
 	<style>
-	.box {
+		.box {
 		width: 70px;
 		height: 70px;
 		background-color: teal;
@@ -14,7 +14,7 @@
 		position: absolute;
 		top: 100px;
 		left: 0px;
-	}
+		}
 	</style>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
@@ -24,30 +24,30 @@
 	<div class="box">?</div>
 
 	<script>
-        /* global $ */
-        'use strict'
-        $(document).ready(function(){
+		/* global $ */
+		'use strict'
+		$(document).ready(function(){
 			//////////////////////////////////////////////////////////////////
 			/////////////////// SETUP DO NOT DELETE //////////////////////////
 			//////////////////////////////////////////////////////////////////
-			
+
 			var $box = $('.box');	// reference to the HTML .box element
 			var boardWidth = $('.board').width();	// the maximum X-Coordinate of the screen
 
 			// Every 50 milliseconds, call the update Function (see below)
 			setInterval(update, 50);
-			
+
 			// Every time the box is clicked, call the handleBoxClick Function (see below)
 			$box.on('click', handleBoxClick);
 
 			//////////////////////////////////////////////////////////////////
 			/////////////////// YOUR CODE BELOW HERE /////////////////////////
 			//////////////////////////////////////////////////////////////////
-			
+
 			var positionX = 0;
-            var speedX = 10;
-            var points = 0;
-			
+			var speedX = 10;
+			var points = 0;
+
 			/* 
 			This Function will be called 20 times/second. Each time it is called,
 			it should move the Box to a new location. If the box drifts off the screen
@@ -55,14 +55,14 @@
 			*/
 			function update() {
 				positionX += speedX;
-                $box.css("left", positionX);
-                
-                if (positionX > boardWidth) {
-                    speedX = -speedX;
-                }
-                if (positionX < 0) {
-                    speedX = -speedX;
-                }
+				$box.css("left", positionX);
+
+				if (positionX > boardWidth) {
+					speedX = -speedX;
+				}
+				if (positionX < 0) {
+					speedX = -speedX;
+				}
 			};
 
 			/* 
@@ -72,12 +72,12 @@
 			*/
 			function handleBoxClick() {
 				points += 1;
-                speedX += 3;
-                positionX = 0;
-                $box.text(points);
+				speedX += 3;
+				positionX = 0;
+				$box.text(points);
 			};
-			
-			
+
+
 		}); // DO NOT DELETE THIS LINE OF CODE. ALL JAVASCRIPT ABOVE HERE
 	</script>
 </body>
