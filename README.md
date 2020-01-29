@@ -240,9 +240,8 @@ _NOTE: All new functions should be declared in the `Helper Functions` section_
 
 #### Step 2: For each sub-task:
   1. declare a new function in the `"Helper Functions"` section with a name that describes the sub-task. Note: it is likely that it may not need any parameters
-  2. insert a `/* multi-line comment */` above your new helper function that describes the sub-task performed.
-  3. identify all code for performing the sub-task and copy-paste it into the new helper function
-  4. replace the old code with a call to your new helper function
+  2. identify all code for performing the sub-task and copy-paste it into the new helper function
+  3. replace the old code with a call to your new helper function
   
 #### Challenge: Can any repeated code be made more abstract/modular?
 
