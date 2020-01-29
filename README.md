@@ -153,8 +153,8 @@ At this point your file structure should look like this:
 ## TODO 2) Refactor the file structure
 
 #### Step 1: move the CSS:
-- Copy and paste the CSS within the `<style>` tags from `index.html` to `index.css`
-- Link the index.css file to the `index.html`file within the `<head>` tags
+
+Copy and paste the CSS within the `<style>` tags from `index.html` to `index.css`
 
 Hint: the code you are copy-pasting should look like the code below:
 
@@ -165,8 +165,8 @@ Hint: the code you are copy-pasting should look like the code below:
 ```
 
 #### Step 2: move the JavaScript
-- Copy and paste the JavaScript within the `<script>` tags from `index.html` to `index.js`
-- Link the index.js file to the `index.html` file within the `<head>` tags
+
+Copy and paste the JavaScript within the `<script>` tags from `index.html` to `index.js`
 
 Hint: the code you are copy-pasting should look like the code below:
 
@@ -182,13 +182,11 @@ $(document).ready(function(){
 
 At this point, your code should be separated into 3 files. If you were to run your program (in cloud9, right-click on `index.html` and select **Preview**), you would notice that it doesn't work! 
 
-That's because `index.html` is only running the code that it has in its own file. However, we can tell it to load the code written in `index.css` and `index.js` by adding a few tags. 
+That's because `index.html` is only running the code that it has in its own file. We need to tell it to load in the code written in `index.js` and `index.css`. There are 2 tags that can do this for us: `<link>` and `<script>`
 
-Use your google search powers to look up the following:
-1. `HTML <link> Tag`
-2. `HTML <script> src Attribute`
-
-Hint: include "w3schools" in your search query
+Use your google search powers to look up the following (Hint: include "w3schools" in your search query):
+1. `HTML <link> tag`
+2. `HTML <script> src attribute`
 
 #### Step 4: Reflection questions:
 Create a new file called `reflections.txt`. Inside, answer the following questions:
