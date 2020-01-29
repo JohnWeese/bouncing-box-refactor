@@ -72,7 +72,7 @@ function sayGoodbye(name) {
 }
 ```
 
-Notice now that the `greet` function simply invokes/calls the other three functions. The main purpose of `greet` is to lay out the high-level logic of the program while the helper functions implementing their one task.
+Notice now that the `greet` function simply invokes/calls the other three functions. The main purpose of `greet` is to lay out the high-level logic of the program while the helper functions implement their one task.
 
 In addition, comments have been added to clarify the purpose of each subtask and to organize the `core logic` from the `helper functions`.
 
