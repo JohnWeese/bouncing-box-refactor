@@ -6,8 +6,8 @@
   - [TODO 1) Create your file structure](#todo-1-create-your-file-structure)
   - [TODO 2) Refactor the file structure](#todo-2-refactor-the-file-structure)
   - [TODO 3) Refactor index.js comment headers](#todo-3-refactor-indexjs-comment-headers)
-  - [TODO 4) Refactor update](#todo-4-refactor-update)
-  - [TODO 5) Refactor handleBoxClick](#todo-5-refactor-handleboxclick)
+  - [TODO 4) Refactor update for separation of concerns](#todo-4-refactor-update-for-separation-of-concerns)
+  - [TODO 5) Refactor handleBoxClick for separation of concerns](#todo-5-refactor-handleboxclick-for-separation-of-concerns)
   - [TODO 6) Reflection](#todo-6-reflection)
 
 
