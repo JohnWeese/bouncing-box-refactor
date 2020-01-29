@@ -5,10 +5,11 @@
 - [TODOs](#todos)
   - [TODO 1) Create your file structure](#todo-1-create-your-file-structure)
   - [TODO 2) Refactor the file structure](#todo-2-refactor-the-file-structure)
-  - [TODO 3) Refactor index.js comment headers](#todo-3-refactor-indexjs-comment-headers)
-  - [TODO 4) Refactor update for separation of concerns](#todo-4-refactor-update-for-separation-of-concerns)
-  - [TODO 5) Refactor handleBoxClick for separation of concerns](#todo-5-refactor-handleboxclick-for-separation-of-concerns)
-  - [TODO 6) Reflection](#todo-6-reflection)
+  - [TODO 3) Reflection](#todo-3-reflection)
+  - [TODO 4) Refactor index.js comment headers](#todo-4-refactor-indexjs-comment-headers)
+  - [TODO 5) Refactor update for separation of concerns](#todo-5-refactor-update-for-separation-of-concerns)
+  - [TODO 6) Refactor handleBoxClick for separation of concerns](#todo-6-refactor-handleboxclick-for-separation-of-concerns)
+  - [TODO 7) Reflection](#todo-7-reflection)
 
 
 # Refactoring Principles
@@ -188,12 +189,12 @@ Use your google search powers to look up the following (Hint: include "w3schools
 1. `HTML <link> tag`
 2. `HTML <script> src attribute`
 
-#### Step 4: Reflection questions:
+## TODO 3) Reflection:
 Create a new file called `reflections.txt`. Inside, answer the following questions:
 - How is the jQuery file being loaded into this project: direct download or Content Delivery Network (CDN)?
 - If you load the `index.js` file before the jquery file our program doesn't work. Why? Open the preview in a new tab and look at the console to help you find out why.
 
-## TODO 3) Refactor `index.js` comment headers
+## TODO 4) Refactor `index.js` comment headers
 
 Comment headers are incredibly userful for organizing the various components of our program. 
 
@@ -228,7 +229,7 @@ $(document).ready(function() {
 #### Step 3: Copy the comment header and add a third comment header at the bottom: `"Helper Functions"`
 #### Step 4: Move any code that is not below the correct header (hint: variable declarations should all be in `"Initialization"`)
 
-## TODO 4) Refactor `update` for separation of concerns
+## TODO 5) Refactor `update` for separation of concerns
 
 In this step we will create our first helper functions for the function `update`. Each helper function will implement a sub-task that the `update` function will call in sequence. 
 
@@ -245,11 +246,11 @@ _NOTE: All new functions should be declared in the `Helper Functions` section_
   
 #### Challenge: Can any repeated code be made more abstract/modular?
 
-## TODO 5) Refactor `handleBoxClick` for separation of concerns
+## TODO 6) Refactor `handleBoxClick` for separation of concerns
 
 Follow the steps outlined above in TODO 4 for `handleBoxClick`
 
-## TODO 6) Reflection:
+## TODO 7) Reflection:
 Inside the `reflections.txt` file answer the following questions:
 - In your opinion, what are the pros of refactoring your HTML, CSS, and JavaScript into separate files? What are the cons?
 - In your opinion, what are the pros of refactoring your JavaScript code into separate functions? What are the cons?
