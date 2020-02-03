@@ -1,7 +1,6 @@
 **Table of Contents**
 - [Refactoring Principles](#refactoring-principles)
   - [Separation of Concerns Example](#separation-of-concerns-example)
-  - [Abstraction Example](#abstraction-example)
 - [TODOs](#todos)
   - [TODO 1) Create your file structure](#todo-1-create-your-file-structure)
   - [TODO 2) Refactor the file structure](#todo-2-refactor-the-file-structure)
@@ -18,7 +17,7 @@ This project will focus on "refactoring" an old project: Bouncing Box.
 
 > Refactoring is the process of internally restructuring existing code without changing its external behavior
 
-This project will focus on refactoring for 2 purposes: Separation of Concerns and Abstraction.
+This project will focus on refactoring for Separation of Concerns.
 
 ### Separation of Concerns Example
 
@@ -78,49 +77,6 @@ Notice now that the `greet` function simply invokes/calls the other three functi
 In addition, comments have been added to clarify the purpose of each subtask and to organize the `core logic` from the `helper functions`.
 
 Separation of concerns is a principle to program by, not a rule that must be followed. For a program this small, this solution may seem like overkill. However, as our programs grow, organizing code into `core logic` and `helper functions` will keep the logic flowing smoothly, improve the the readability of the program, and simplify the debugging process.
-
-### Abstraction Example
-
-> Abstraction is the process of turning something specific (hard-coded) into something generic (reusable)
-
-Repetitive code presents an opportunity to refactor for abstraction. Abstraction helps us to follow the D.R.Y. principle (don't repeat yourself).
-
-To refactor repetitive code for abstraction, you can follow these 3 steps:
-1. identify the repetetive statements and turn those statements into a new function declaration
-2. identify the changing expressions/data (if any) and turn those expressions/data into parameters
-3. replace repetitive code with function calls
-
-Below is an example of refactoring for abstraction. Consider the following code which simulates rolling dice of different sizes:
-
-```js
-var roll1 = Math.ceil(Math.random() * 6);
-var roll2 = Math.ceil(Math.random() * 10);
-var roll3 = Math.ceil(Math.random() * 20);
-```
-
-Each time I roll the dice I am using the `Math.ceil()` and `Math.random()` functions, the `*` operator and a number value. These statements can be turned into a new function declaration.
-
-```js
-function rollDice() {
-  return Math.ceil(Math.random() * 6); // the 6 should be a parameter, not hard-coded
-}
-
-var roll1 = rollDice(6);
-var roll2 = rollDice(10);
-var roll3 = rollDice(20);
-```
-
-However, we want the number value `6` to change each time we call the function. That value must be replaced with a parameter:
-
-```js
-function rollDice(sides) {
-  return Math.ceil(Math.random() * sides);
-}
-
-var roll1 = rollDice(6);
-var roll2 = rollDice(10);
-var roll3 = rollDice(20);
-```
 
 # TODOs
 
