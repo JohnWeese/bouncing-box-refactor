@@ -102,7 +102,7 @@ At this point your file structure should look like this:
 
 **NOTE: DO NOT USE YOUR OLD BOUNCING-BOX PROJECT**
 
-Open up the file `refactor-me.html` linked at the top of the repository. It contains a solution for bouncing box. Copy the contents of that file into your newly created `index.html` file.
+Open up the file `refactor-me.html` linked at the top of this github repository. It contains a solution for bouncing box. Copy the contents of that file into your newly created `index.html` file.
 
 ## TODO 2) Refactor the file structure
 
