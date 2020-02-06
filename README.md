@@ -84,9 +84,7 @@ Separation of concerns is a principle to program by, not a rule that must be fol
 
 ## TODO 1) Create your file structure
 
-First, open up the bouncing box code linked below:
-
-[Bouncing Box jsbin: Right Click --> Open Link in New Tab](https://jsbin.com/goyuhod/edit?html,output)
+First, open up the file `refactor-me.html` linked at the top of the repository.
 
 Our goal for this first TODO is to get this code into our cloud9 workspace. **NOTE: DO NOT USE YOUR OLD BOUNCING-BOX PROJECT**
 
@@ -204,7 +202,7 @@ _NOTE: All new functions should be declared in the `Helper Functions` section_
 
 ## TODO 6) Refactor `handleBoxClick` for separation of concerns
 
-Follow the steps outlined above in TODO 4 for `handleBoxClick`
+Follow the steps outlined above in TODO 5 for `handleBoxClick`
 
 ## TODO 7) Reflection:
 Inside the `reflections.txt` file answer the following questions:
