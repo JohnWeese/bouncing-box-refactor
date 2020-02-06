@@ -1,4 +1,5 @@
 **Table of Contents**
+- [Overview](#overview)
 - [Refactoring Principles](#refactoring-principles)
   - [Separation of Concerns Example](#separation-of-concerns-example)
 - [TODOs](#todos)
@@ -11,13 +12,21 @@
   - [TODO 7) Reflection](#todo-7-reflection)
 
 
-# Refactoring Principles
+# Overview
 
-This project will focus on "refactoring" an old project: Bouncing Box.
+This project will focus on **refactoring** an old project: Bouncing Box.
 
 > Refactoring is the process of internally restructuring existing code without changing its external behavior
 
-This project will focus on refactoring for Separation of Concerns.
+The solution code for bouncing box is linked to this repository in a file called `refactor-me.html`. While the program works (if you were to copy/paste the contents of that file into the HTML tab of a jsbin it would work!), it is not organized in a way that follows the rule of **Separation of Concerns**:
+
+> Every file/module/function should perform one task and one task only.
+
+The first goal of this project is to restructure this project such that HTML, CSS, and JavaScript can each live in their own separate file.
+
+The second goal is to then refactor the JavaScript code such that the core logic of the program can be broken up into smaller pieces and implemented using **Helper Functions**.
+
+> A helper function is a function that performs part of the computation of another function. Helper functions are used to make your programs easier to read by giving descriptive names to computations. They also let you reuse computations, just as with functions in general.
 
 ### Separation of Concerns Example
 
