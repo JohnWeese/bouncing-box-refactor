@@ -1,7 +1,6 @@
 **Table of Contents**
 - [Overview](#overview)
-- [Refactoring Principles](#refactoring-principles)
-  - [Separation of Concerns Example](#separation-of-concerns-example)
+- [Separation of Concerns Example](#separation-of-concerns-example)
 - [TODOs](#todos)
   - [TODO 1) Create your file structure](#todo-1-create-your-file-structure)
   - [TODO 2) Refactor the file structure](#todo-2-refactor-the-file-structure)
