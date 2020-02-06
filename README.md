@@ -84,10 +84,6 @@ Separation of concerns is a principle to program by, not a rule that must be fol
 
 ## TODO 1) Create your file structure
 
-First, open up the file `refactor-me.html` linked at the top of the repository.
-
-Our goal for this first TODO is to get this code into our cloud9 workspace. **NOTE: DO NOT USE YOUR OLD BOUNCING-BOX PROJECT**
-
 #### Step 1: Create your folder / files
 
 Right click on the main folder in your workspace and create a new folder with the name: `bouncing-box-refactor`
@@ -102,8 +98,11 @@ At this point your file structure should look like this:
 
 ![alt text](https://github.com/OperationSpark/bouncing-box-refactor/blob/master/img/file-structure.png?raw=true)
 
-#### Step 2: Copy code from jsbin into `index.html`
-- Copy the code from the bouncing box jsbin into `index.html`
+#### Step 2: Copy code from `refactor-me.html` into `index.html`
+
+**NOTE: DO NOT USE YOUR OLD BOUNCING-BOX PROJECT**
+
+Open up the file `refactor-me.html` linked at the top of the repository. It contains a solution for bouncing box. Copy the contents of that file into your newly created `index.html` file.
 
 ## TODO 2) Refactor the file structure
 
