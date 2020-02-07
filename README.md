@@ -106,17 +106,17 @@ At this point your file structure should look like this:
 
 ![alt text](https://github.com/OperationSpark/bouncing-box-refactor/blob/master/img/file-structure.png?raw=true)
 
-#### Step 2: Copy code from `refactor-me.html` into `index.html`
+## TODO 2) Refactor the file structure
+
+#### Step 1: Copy code from `refactor-me.html` into `index.html`
 
 **NOTE: DO NOT USE YOUR OLD BOUNCING-BOX PROJECT**
 
 Open up the file `refactor-me.html` linked at the top of this github repository. It contains a solution for bouncing box. Copy the contents of that file into your newly created `index.html` file.
 
-## TODO 2) Refactor the file structure
+#### Step 2: move the CSS:
 
-#### Step 1: move the CSS:
-
-Copy and paste the CSS within the `<style>` tags from `index.html` to `index.css`
+Copy and paste the CSS within the `<style>` tags from `index.html` to `index.css`. Do not copy the `<style>` tags themselves. You can delete them once you have copied over the CSS.
 
 Hint: the code you are copy-pasting should look like the code below:
 
@@ -126,9 +126,9 @@ Hint: the code you are copy-pasting should look like the code below:
 }
 ```
 
-#### Step 2: move the JavaScript
+#### Step 3: move the JavaScript
 
-Copy and paste the JavaScript within the `<script>` tags from `index.html` to `index.js`
+Copy and paste the JavaScript within the `<script>` tags from `index.html` to `index.js`. Do not copy the `<script>` tags themselves. You can delete them once you have copied over the JavaScript.
 
 Hint: the code you are copy-pasting should look like the code below:
 
@@ -140,7 +140,7 @@ $(document).ready(function(){
 });
 ```
 
-#### Step 3: Link `index.js` and `index.css` to `index.html`
+#### Step 4: Link `index.js` and `index.css` to `index.html`
 
 At this point, your code should be separated into 3 files. If you were to run your program (in cloud9, right-click on `index.html` and select **Preview**), you would notice that it doesn't work! 
 
