@@ -88,7 +88,7 @@ Separation of concerns is a principle to program by, not a rule that must be fol
 
 # TODOs
 
-### _Remember to use `control+c` and `control+v` to copy and paste_
+### _Remember to use `control+c` to copy and `control+v` to paste_
 
 ## TODO 1) Create your file structure
 
