@@ -1,6 +1,6 @@
 **Table of Contents**
 - [Overview](#overview)
-- [Separation of Concerns Example](#separation-of-concerns-example)
+- [Separation of Concerns And Abstraction Example](#separation-of-concerns-and-abstraction-example)
 - [TODOs](#todos)
   - [TODO 1) Create your file structure](#todo-1-create-your-file-structure)
   - [TODO 2) Refactor the file structure](#todo-2-refactor-the-file-structure)
@@ -27,64 +27,143 @@ The second goal is to then refactor the JavaScript code such that the core logic
 
 > A helper function is a function that performs part of the computation of another function. Helper functions are used to make your programs easier to read by giving descriptive names to computations. They also let you reuse computations, just as with functions in general.
 
-# Separation of Concerns Example
+# Separation of Concerns and Abstraction Example
 
 The main principle of separation of concerns is
 
 > Every file/module/function should perform one task and one task only.
 
-Often, files/functions/modules serve to execute multiple sub-tasks. Consider the following function:
+The main principle of abstraction is:
+
+> Hide the complexity of code behind functions, also known as _the API_ (Application Programming Interface)
+
+When refactoring a project, we can often achieve both of these goals by breaking down the core logic of our program into smaller "helper functions" that each accomplish one step of the whole program. When put together, these helper functions can achieve the same result but our core logic becomes more readable and therefore easier to manage, debug, and grow!
+
+Consider the following program for validating a user's password. The password must have atleast 8 characters, include a number, and at least 1 upper-case letter:
 
 ```js
-// core logic
-function greet() {
-  var name = prompt("what is your name?");
-  console.log("hello " + name);
-  console.log("goodbye " + name);
+var pw = prompt("choose a password");
+alert(validatePassword(pw));
+
+// core logic function
+function validatePassword(pw) {
+  // check the length of the password, it must have at least 8 characters
+  var isLongEnough = false;
+  if (pw.length >= 8) {
+    isLongEnough = true;
+  }
+  
+  // check to see if at least one uppercase character is included
+  var hasUpper = false;
+  for (var i = 0; i < pw.length; i++) {
+    if (pw[i].toUpperCase() === pw[i]) {
+      var hasUpper = true;
+    }
+  }
+  
+  // check to see if the password has at least one number
+  var hasNumber = false;
+  for (var i = 0; i < pw.length; i++) {
+    if (Number(pw[i]) !== NaN) {
+      hasNumber = true;
+    }
+  }
+  
+  // If the password passes all the tests, return "password valid", otherwise return "password invalid"
+  if (isLongEnough === false) {
+    return "password invalid";
+  }
+  else if (hasUpper === false) {
+    return "password invalid";
+  }
+  else if (hasNumber === false) {
+    return "password invalid";
+  }
+  else {
+    return "password valid";
+  }
 } 
 ```
 
-Notice how the `greet` function has 3 distinct sub-tasks that it performs: 
-1. asking for a name
-2. saying hello with the name
-3. saying goodbye with the name
+If my comments weren't included, this program might be pretty difficult to follow for a beginner programmer. This speaks to the importance of commenting your code!
 
-To achieve separation of concerns with this `greet` function, the _implementation_ for each sub-task (the code for _how_ to actually perform a task) should be isolated from one another in the form of _helper functions_
+Even with my comments, this `validatePassword` function is quite complex and has multiple steps that work together to reach the end goal. Because of the complexity of the problem, it makes it quite hard to read. 
 
-Below is an example of how it may be refactored:
+Furthermore, if I made a mistake, it might not be immediately clear which step I made the mistake on, I would have to search through the entire function to figure out the mistake. Refactoring this code with separation of concerns and abstraction in mind can help improve the **readability** and **debuggability** of this code. 
+
+To do this, we'll create _helper functions_ which are functions designed to _help_ the main function do its job. The first step is to identify the distinct steps to validating the password. Can you tell what they are?
+
+Here are the steps I would identify:
+1. Determine if the password is long enough
+2. Determine if the password has at least one upper-case character
+3. Determine if the password has at least one number
+4. Determine if the password is valid based on the three tests above
+
+The next step is to create a helper function for each step, by moving the code for the task into it's own function, then calling that function. 
+
+Consider how I have refactored the program below. Compare and contrast the two versions of the `validatePassword` function. Which is more readable? How does version 2 demonstrate separation of concerns? 
+
 
 ```js
-// core logic
-function greet() {
-  // ask for name
-  var name = getStrangersName();
+var pw = prompt("choose a password");
+alert(validatePassword(pw));
 
-  // say hello
-  sayHello(name);  
+// core logic function
+function validatePassword(pw) {
+  var isLongEnough = validateLength(pw);
+  var hasUpper = validateUpperCase(pw);
+  var hasNumber = validateNumber(pw);
+  var isValid = passesAllTests(isLongEnough, hasUpper, hasNumber);
   
-  // say goodbye
-  sayGoodbye(name);
+  if (isValid === false) {
+    return "invalid password";
+  } else {
+    return "valid password";
+  }
+} 
+
+// check the length of the password, it must have at least 8 characters
+function validateLength(pw) {
+  if (pw.length >= 8) { return true; }
+  else { return false; }
 }
 
-// helper functions
-function getStrangersName() {
-  return prompt("what is your name?");
+// check to see if at least one uppercase character is included
+function validateUpperCase(pw) {
+  for (var i = 0; i < pw.length; i++) {
+    if (pw[i].toUpperCase() === pw[i]) {
+      return true;
+    }
+  }
 }
 
-function sayHello(name) {
-  console.log("hello " + name);
+// check to see if the password has at least one number
+function validateNumber(pw) {
+  for (var i = 0; i < pw.length; i++) {
+    if (Number(pw[i]) !== NaN) {
+      return true;
+    }
+  }
 }
 
-function sayGoodbye(name) {
-  console.log("goodbye " + name);
+// If the password passes all the tests, return true, otherwise return false
+function passesAllTests(lengthTest, upperCaseTest, numberTest) {
+  if (isLongEnough === false) {
+    return false;
+  }
+  else if (hasUpper === false) {
+    return false;
+  }
+  else if (hasNumber === false) {
+    return false;
+  }
+  else {
+    return true;
+  }
 }
 ```
 
-Notice now that the `greet` function simply invokes/calls the other three functions. The main purpose of `greet` is to lay out the high-level logic of the program while the helper functions implement their one task.
-
-In addition, comments have been added to clarify the purpose of each subtask and to organize the `core logic` from the `helper functions`.
-
-Separation of concerns is a principle to program by, not a rule that must be followed. For a program this small, this solution may seem like overkill. However, as our programs grow, organizing code into `core logic` and `helper functions` will keep the logic flowing smoothly, improve the the readability of the program, and simplify the debugging process.
+Separation of concerns and abstraction are principles to program by, not rules that must be followed. For this project, refactoring may seem like overkill. However, as our programs grow, organizing code into `core logic` and `helper functions` improve the the readability of the program and simplify the debugging process.
 
 # TODOs
 
