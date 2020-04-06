@@ -42,10 +42,15 @@ When refactoring a project, we can often achieve both of these goals by breaking
 Consider the following program for validating a user's password. The password must have atleast 8 characters, include a number, and at least 1 upper-case letter:
 
 ```js
+// Initialization
+////////////////////////////////////////////////////////////////////////
+
 var pw = prompt("choose a password");
 alert(validatePassword(pw));
 
-// core logic function
+// Core Logic
+////////////////////////////////////////////////////////////////////////
+
 function validatePassword(pw) {
   // check the length of the password, it must have at least 8 characters
   var isLongEnough = false;
@@ -91,7 +96,7 @@ Even with my comments, this `validatePassword` function is quite complex and has
 
 Furthermore, if I made a mistake, it might not be immediately clear which step I made the mistake on, I would have to search through the entire function to figure out the mistake. Refactoring this code with separation of concerns and abstraction in mind can help improve the **readability** and **debuggability** of this code. 
 
-To do this, we'll create _helper functions_ which are functions designed to _help_ the main function do its job. The first step is to identify the distinct steps to validating the password. Can you tell what they are?
+First, identify the distinct steps to validating the password. Can you tell what they are?
 
 Here are the steps I would identify:
 1. Determine if the password is long enough
@@ -99,16 +104,22 @@ Here are the steps I would identify:
 3. Determine if the password has at least one number
 4. Determine if the password is valid based on the three tests above
 
-The next step is to create a helper function for each step, by moving the code for the task into it's own function, then calling that function. 
+Next, create a _helper function_ for each step above, which are functions designed to _help_ the main function do its job. We can turn one of the steps above into a helper function by moving the code for the step into it's own new function, then calling that function from the core logic function (`validatePassword`). 
 
 Consider how I have refactored the program below. Compare and contrast the two versions of the `validatePassword` function. Which is more readable? How does version 2 demonstrate separation of concerns? 
 
 
 ```js
+
+// Initialization
+////////////////////////////////////////////////////////////////////////
+
 var pw = prompt("choose a password");
 alert(validatePassword(pw));
 
-// core logic function
+// Core Logic
+////////////////////////////////////////////////////////////////////////
+
 function validatePassword(pw) {
   var isLongEnough = validateLength(pw);
   var hasUpper = validateUpperCase(pw);
@@ -121,6 +132,9 @@ function validatePassword(pw) {
     return "valid password";
   }
 } 
+
+// Helper Functions
+////////////////////////////////////////////////////////////////////////
 
 // check the length of the password, it must have at least 8 characters
 function validateLength(pw) {
