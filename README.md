@@ -62,7 +62,7 @@ function validatePassword(pw) {
   var hasUpper = false;
   for (var i = 0; i < pw.length; i++) {
     if (pw[i].toUpperCase() === pw[i]) {
-      var hasUpper = true;
+      hasUpper = true;
     }
   }
   
