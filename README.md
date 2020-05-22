@@ -86,8 +86,7 @@ Even with my comments, this `validatePassword` function is quite complex and has
 
 Furthermore, if I made a mistake, it might not be immediately clear which step I made the mistake on, I would have to search through the entire function to figure out the mistake. Refactoring this code with separation of concerns and abstraction in mind can help improve the **readability** and **debuggability** of this code. 
 
-
-When refactoring a project, we can often achieve both of these goals by breaking down the core logic of our program into smaller "helper functions" that each accomplish one step of the whole program. When put together, these helper functions can achieve the same result but our core logic becomes more readable and therefore easier to manage, debug, and grow!
+When refactoring a project, we can achieve both of these goals by breaking down the core logic of our program into smaller **helper functions** that each accomplish one step of the whole program. When combined, these helper functions can achieve the same result but our core logic will be more readable and therefore easier to manage, debug, and scale!
 
 First, identify the distinct steps to validating the password. Can you tell what they are?
 
@@ -97,18 +96,18 @@ Here are the steps I would identify:
 3. Determine if the password has at least one number
 4. Determine if the password is valid based on the three tests above
 
-Next, create a _helper function_ for each step above, which are functions designed to _help_ the main function do its job. We can turn one of the steps above into a helper function by moving the code for the step into it's own new function, then calling that function from the core logic function (`validatePassword`). 
+Next, for each step above whose complexity you want to hide, create a _helper function_ , which are functions designed to _help_ the main function do its job while hiding the complexity of that function. For example, determining if the password has at least one upper case letter is fairly complex so we would want to create a helper function for it. However, evaluating the three tests at the end is straight forward so we may not need a helper for that code.
 
-Consider how I have refactored the program below. Compare and contrast the two versions of the `validatePassword` function. Which is more readable? How does version 2 demonstrate separation of concerns? 
+We can turn one of the steps above into a helper function by moving the code for the step into it's own new function, then calling each function in the core logic.
 
+Consider how I have refactored the program below. Compare and contrast the two versions. Which is more readable? How does version 2 demonstrate separation of concerns? 
 
 ```js
-
-
 // Core Logic
 ////////////////////////////////////////////////////////////////////////
 
 var pw = prompt("choose a password");
+
 if (isLongEnough(pw) === false) {
   alert("invalid password");
 }
