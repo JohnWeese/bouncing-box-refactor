@@ -40,9 +40,6 @@ The main principle of abstraction is:
 Consider the following program for validating a user's password. The password must have atleast 8 characters, include a number, and at least 1 upper-case letter:
 
 ```js
-// Initialization
-////////////////////////////////////////////////////////////////////////
-
 var pw = prompt("choose a password");
 var isValid = false;
 
