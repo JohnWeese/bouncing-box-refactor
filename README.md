@@ -37,8 +37,6 @@ The main principle of abstraction is:
 
 > Hide the complexity of code behind functions, also known as _the API_ (Application Programming Interface)
 
-When refactoring a project, we can often achieve both of these goals by breaking down the core logic of our program into smaller "helper functions" that each accomplish one step of the whole program. When put together, these helper functions can achieve the same result but our core logic becomes more readable and therefore easier to manage, debug, and grow!
-
 Consider the following program for validating a user's password. The password must have atleast 8 characters, include a number, and at least 1 upper-case letter:
 
 ```js
@@ -46,48 +44,43 @@ Consider the following program for validating a user's password. The password mu
 ////////////////////////////////////////////////////////////////////////
 
 var pw = prompt("choose a password");
-alert(validatePassword(pw));
+var isValid = false;
 
-// Core Logic
-////////////////////////////////////////////////////////////////////////
+// check the length of the password, it must have at least 8 characters
+var isLongEnough = false;
+if (pw.length >= 8) {
+  isLongEnough = true;
+}
 
-function validatePassword(pw) {
-  // check the length of the password, it must have at least 8 characters
-  var isLongEnough = false;
-  if (pw.length >= 8) {
-    isLongEnough = true;
+// check to see if at least one uppercase character is included
+var hasUpperCase = false;
+for (var i = 0; i < pw.length; i++) {
+  if (pw[i].toUpperCase() === pw[i]) {
+    hasUpperCase = true;
   }
-  
-  // check to see if at least one uppercase character is included
-  var hasUpper = false;
-  for (var i = 0; i < pw.length; i++) {
-    if (pw[i].toUpperCase() === pw[i]) {
-      hasUpper = true;
-    }
+}
+
+// check to see if the password has at least one number
+var hasNumber = false;
+for (var i = 0; i < pw.length; i++) {
+  if (Number(pw[i]) !== NaN) {
+    hasNumber = true;
   }
-  
-  // check to see if the password has at least one number
-  var hasNumber = false;
-  for (var i = 0; i < pw.length; i++) {
-    if (Number(pw[i]) !== NaN) {
-      hasNumber = true;
-    }
-  }
-  
-  // If the password passes all the tests, return "password valid", otherwise return "password invalid"
-  if (isLongEnough === false) {
-    return "password invalid";
-  }
-  else if (hasUpper === false) {
-    return "password invalid";
-  }
-  else if (hasNumber === false) {
-    return "password invalid";
-  }
-  else {
-    return "password valid";
-  }
-} 
+}
+
+// If the password passes all the tests, return "password valid", otherwise return "password invalid"
+if (isLongEnough === false) {
+  alert("invalid password");
+}
+else if (hasUpperCase === false) {
+  alert("invalid password");
+}
+else if (hasNumber === false) {
+  alert("invalid password");
+}
+else {
+  alert("valid password");
+}
 ```
 
 If my comments weren't included, this program might be pretty difficult to follow for a beginner programmer. This speaks to the importance of commenting your code!
@@ -95,6 +88,9 @@ If my comments weren't included, this program might be pretty difficult to follo
 Even with my comments, this `validatePassword` function is quite complex and has multiple steps that work together to reach the end goal. Because of the complexity of the problem, it makes it quite hard to read. 
 
 Furthermore, if I made a mistake, it might not be immediately clear which step I made the mistake on, I would have to search through the entire function to figure out the mistake. Refactoring this code with separation of concerns and abstraction in mind can help improve the **readability** and **debuggability** of this code. 
+
+
+When refactoring a project, we can often achieve both of these goals by breaking down the core logic of our program into smaller "helper functions" that each accomplish one step of the whole program. When put together, these helper functions can achieve the same result but our core logic becomes more readable and therefore easier to manage, debug, and grow!
 
 First, identify the distinct steps to validating the password. Can you tell what they are?
 
@@ -111,39 +107,39 @@ Consider how I have refactored the program below. Compare and contrast the two v
 
 ```js
 
-// Initialization
-////////////////////////////////////////////////////////////////////////
-
-var pw = prompt("choose a password");
-alert(validatePassword(pw));
 
 // Core Logic
 ////////////////////////////////////////////////////////////////////////
 
-function validatePassword(pw) {
-  var isLongEnough = validateLength(pw);
-  var hasUpper = validateUpperCase(pw);
-  var hasNumber = validateNumber(pw);
-  var isValid = passesAllTests(isLongEnough, hasUpper, hasNumber);
-  
-  if (isValid === false) {
-    return "invalid password";
-  } else {
-    return "valid password";
-  }
-} 
+var pw = prompt("choose a password");
+if (isLongEnough(pw) === false) {
+  alert("invalid password");
+}
+else if (hasUpperCase(pw) === false) {
+  alert("invalid password");
+}
+else if (hasNumber(pw) === false) {
+  alert("invalid password");
+}
+else {
+  alert("valid password");
+}
 
 // Helper Functions
 ////////////////////////////////////////////////////////////////////////
 
 // check the length of the password, it must have at least 8 characters
-function validateLength(pw) {
-  if (pw.length >= 8) { return true; }
-  else { return false; }
+function isLongEnough(pw) {
+  if (pw.length >= 8) { 
+    return true; 
+  }
+  else { 
+    return false; 
+  }
 }
 
 // check to see if at least one uppercase character is included
-function validateUpperCase(pw) {
+function hasUpperCase(pw) {
   for (var i = 0; i < pw.length; i++) {
     if (pw[i].toUpperCase() === pw[i]) {
       return true;
@@ -152,7 +148,7 @@ function validateUpperCase(pw) {
 }
 
 // check to see if the password has at least one number
-function validateNumber(pw) {
+function hasNumber(pw) {
   for (var i = 0; i < pw.length; i++) {
     if (Number(pw[i]) !== NaN) {
       return true;
@@ -160,21 +156,6 @@ function validateNumber(pw) {
   }
 }
 
-// If the password passes all the tests, return true, otherwise return false
-function passesAllTests(lengthTest, upperCaseTest, numberTest) {
-  if (isLongEnough === false) {
-    return false;
-  }
-  else if (hasUpper === false) {
-    return false;
-  }
-  else if (hasNumber === false) {
-    return false;
-  }
-  else {
-    return true;
-  }
-}
 ```
 
 Separation of concerns and abstraction are principles to program by, not rules that must be followed. For this project, refactoring may seem like overkill. However, as our programs grow, organizing code into `core logic` and `helper functions` improve the the readability of the program and simplify the debugging process.
