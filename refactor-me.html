@@ -3,7 +3,7 @@
 <head>
 	<title>Bouncing Box</title>
 	<style>
-		.box {
+		#box {
 			width: 70px;
 			height: 70px;
 			background-color: teal;
@@ -20,7 +20,7 @@
 </head>
 <body class="board">
 	<!-- HTML for the box -->
-	<div class="box">0</div>
+	<div id="box">0</div>
 
 	<script>
 		/* global $ */
@@ -36,7 +36,7 @@
 			setInterval(update, 50);
 
 			// Every time the box is clicked, call the handleBoxClick Function (see below)
-			$('.box').on('click', handleBoxClick);
+			$('#box').on('click', handleBoxClick);
 
 			//////////////////////////////////////////////////////////////////
 			/////////////////// YOUR CODE BELOW HERE /////////////////////////
@@ -53,7 +53,7 @@
 			*/
 			function update() {
 				positionX += speedX;
-				$('.box').css("left", positionX);
+				$('#box').css("left", positionX);
 
 				if (positionX > BOARD_WIDTH) {
 					speedX = -speedX;
@@ -70,7 +70,7 @@
 			*/
 			function handleBoxClick() {
 				points += 1;
-				$('.box').text(points);
+				$('#box').text(points);
 				
 				if (speedX >= 0) {
 					speedX += 3;
