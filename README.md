@@ -41,7 +41,6 @@ Consider the following program for validating a user's password. The password mu
 
 ```js
 var pw = prompt("choose a password");
-var isValid = false;
 
 // check the length of the password, it must have at least 8 characters
 var isLongEnough = false;
@@ -60,7 +59,7 @@ for (var i = 0; i < pw.length; i++) {
 // check to see if the password has at least one number
 var hasNumber = false;
 for (var i = 0; i < pw.length; i++) {
-  if (Number(pw[i]) !== NaN) {
+  if (isNaN(Number(pw[i]))) {
     hasNumber = true;
   }
 }
@@ -146,7 +145,7 @@ function hasUpperCase(pw) {
 // check to see if the password has at least one number
 function hasNumber(pw) {
   for (var i = 0; i < pw.length; i++) {
-    if (Number(pw[i]) !== NaN) {
+    if (isNaN(Number(pw[i]))) {
       return true;
     }
   }
