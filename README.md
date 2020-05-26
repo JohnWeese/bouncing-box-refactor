@@ -34,13 +34,13 @@ The function below determines the pay for an employee that earns $10/hour with t
 ```js
 function calculateWage(overtime) { 
   if (overtime < 5) {
-	  return (10 * 40) + (overtime * 15);
+    return (10 * 40) + (overtime * 15);
   }
   else if (overtime < 10) {
-	  return (10 * 40) + (overtime * 20);
+    return (10 * 40) + (overtime * 20);
   }
   else {
-	  return (10 * 40) + (overtime * 25);
+    return (10 * 40) + (overtime * 25);
   }
 } 
 console.log(calculateWage(1)); //=> 415
