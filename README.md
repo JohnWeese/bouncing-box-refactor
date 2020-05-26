@@ -1,6 +1,6 @@
 **Table of Contents**
 - [Overview](#overview)
-- [Separation of Concerns And Abstraction Example](#separation-of-concerns-and-abstraction-example)
+- [Separation of Concerns Example](#separation-of-concerns-example)
 - [TODOs](#todos)
   - [TODO 1) Create your file structure](#todo-1-create-your-file-structure)
   - [TODO 2) Refactor the file structure](#todo-2-refactor-the-file-structure)
@@ -27,133 +27,65 @@ The second goal is to then refactor the JavaScript code such that the core logic
 
 > A helper function is a function that performs part of the computation of another function. Helper functions are used to make your programs easier to read by giving descriptive names to computations. They also let you reuse computations, just as with functions in general.
 
-# Separation of Concerns and Abstraction Example
+# Separation of Concerns Example
 
-The main principle of separation of concerns is
-
-> Every file/module/function should perform one task and one task only.
-
-The main principle of abstraction is:
-
-> Hide the complexity of code behind functions, also known as _the API_ (Application Programming Interface)
-
-Consider the following program for validating a user's password. The password must have atleast 8 characters, include a number, and at least 1 upper-case letter:
+The function below determines the pay for an employee that earns $10/hour with the opportunity to earn overtime. The overtime rate increases as the number of overtime hours goes up: $15/hour for 1-4 hours of overtime, $20/hour for 5-9 hours, and $25/hour for more than 10 hours of overtime.
 
 ```js
-var pw = prompt("choose a password");
-
-// check the length of the password, it must have at least 8 characters
-var isLongEnough = false;
-if (pw.length >= 8) {
-  isLongEnough = true;
-}
-
-// check to see if at least one uppercase character is included
-var hasUpperCase = false;
-for (var i = 0; i < pw.length; i++) {
-  if (pw[i].toUpperCase() === pw[i]) {
-    hasUpperCase = true;
+function calculateWage(overtime) { 
+  if (overtime < 5) {
+	  return (10 * 40) + (overtime * 15);
   }
-}
-
-// check to see if the password has at least one number
-var hasNumber = false;
-for (var i = 0; i < pw.length; i++) {
-  if (isNaN(Number(pw[i]))) {
-    hasNumber = true;
+  else if (overtime < 10) {
+	  return (10 * 40) + (overtime * 20);
   }
-}
+  else {
+	  return (10 * 40) + (overtime * 25);
+  }
+} 
+console.log(calculateWage(1)); //=> 415
+console.log(calculateWage(5)); //=> 500
+console.log(calculateWage(10)); //=> 750
+```
 
-// If the password passes all the tests, return "password valid", otherwise return "password invalid"
-if (isLongEnough === false) {
-  alert("invalid password");
-}
-else if (hasUpperCase === false) {
-  alert("invalid password");
-}
-else if (hasNumber === false) {
-  alert("invalid password");
-}
-else {
-  alert("valid password");
+In this function, there are two main concerns: 
+1. determine the range of overtime hours
+2. calculate the pay based on the rate for the identified range. 
+
+We can separate these two concerns by adding in a helper function that calculates the pay based on the specified overtime rate:
+
+```js
+function pay(overtime, rate) {
+  return (10 * 40) + (overtime * rate);
 }
 ```
 
-If my comments weren't included, this program might be pretty difficult to follow for a beginner programmer. This speaks to the importance of commenting your code!
-
-Even with my comments, this `validatePassword` function is quite complex and has multiple steps that work together to reach the end goal. Because of the complexity of the problem, it makes it quite hard to read. 
-
-Furthermore, if I made a mistake, it might not be immediately clear which step I made the mistake on, I would have to search through the entire function to figure out the mistake. Refactoring this code with separation of concerns and abstraction in mind can help improve the **readability** and **debuggability** of this code. 
-
-When refactoring a project, we can achieve both of these goals by breaking down the core logic of our program into smaller **helper functions** that each accomplish one step of the whole program. When combined, these helper functions can achieve the same result but our core logic will be more readable and therefore easier to manage, debug, and scale!
-
-First, identify the distinct steps to validating the password. Can you tell what they are?
-
-Here are the steps I would identify:
-1. Determine if the password is long enough
-2. Determine if the password has at least one upper-case character
-3. Determine if the password has at least one number
-4. Determine if the password is valid based on the three tests above
-
-Next, for each step above whose complexity you want to hide, create a _helper function_ , which are functions designed to _help_ the main function do its job while hiding the complexity of that function. For example, determining if the password has at least one upper case letter is fairly complex so we would want to create a helper function for it. However, evaluating the three tests at the end is straight forward so we may not need a helper for that code.
-
-We can turn one of the steps above into a helper function by moving the code for the step into it's own new function, then calling each function in the core logic.
-
-Consider how I have refactored the program below. Compare and contrast the two versions. Which is more readable? How does version 2 demonstrate separation of concerns? 
+And then replace the code in `calcualteWage` with a call to this helper function.
 
 ```js
-// Core Logic
-////////////////////////////////////////////////////////////////////////
-
-var pw = prompt("choose a password");
-
-if (isLongEnough(pw) === false) {
-  alert("invalid password");
-}
-else if (hasUpperCase(pw) === false) {
-  alert("invalid password");
-}
-else if (hasNumber(pw) === false) {
-  alert("invalid password");
-}
-else {
-  alert("valid password");
-}
-
-// Helper Functions
-////////////////////////////////////////////////////////////////////////
-
-// check the length of the password, it must have at least 8 characters
-function isLongEnough(pw) {
-  if (pw.length >= 8) { 
-    return true; 
+function calculateWage(overtime) { 
+  if (overtime < 5) {
+	  return pay(overtime, 15);
   }
-  else { 
-    return false; 
+  else if (overtime < 10) {
+	  return pay(overtime, 20);
+  }
+  else {
+	  return pay(overtime, 25);
   }
 }
 
-// check to see if at least one uppercase character is included
-function hasUpperCase(pw) {
-  for (var i = 0; i < pw.length; i++) {
-    if (pw[i].toUpperCase() === pw[i]) {
-      return true;
-    }
-  }
+// helper function
+function pay(overtime, rate) {
+  return (10 * 40) + (overtime * rate);
 }
 
-// check to see if the password has at least one number
-function hasNumber(pw) {
-  for (var i = 0; i < pw.length; i++) {
-    if (isNaN(Number(pw[i]))) {
-      return true;
-    }
-  }
-}
-
+console.log(calculateWage(1)); //=> 415
+console.log(calculateWage(5)); //=> 500
+console.log(calculateWage(10)); //=> 750
 ```
 
-Separation of concerns and abstraction are principles to program by, not rules that must be followed. For this project, refactoring may seem like overkill. However, as our programs grow, organizing code into `core logic` and `helper functions` improve the the readability of the program and simplify the debugging process.
+The result is a more readable program (because the helper function has a descriprtive name) and improves the organization of our code. If an error were to exist in the program, it would be easier to identify. Lastly, if we needed to change something such as the base pay from $10/hour to $12/hour, we would only have to update the `pay` function in one place rather than in three.
 
 # TODOs
 
@@ -261,17 +193,15 @@ $(document).ready(function() {
 
 ## TODO 5) Refactor `update` for separation of concerns
 
-In this step we will create our first helper functions for the function `update`. Each helper function will implement a sub-task that the `update` function will call in sequence. 
-
-Look at the top of this document for an example of the process outlined below.
+In this step we will create our first helper functions for the function `update`. Each helper function will implement a separate "concern" of the `update` function. See above for an example.
 
 _NOTE: All new functions should be declared in the `Helper Functions` section_
 
-#### Step 1: Identify the main sub-tasks that the `update` function performs.
+#### Step 1: Identify the main concerns of the `update` function.
 
-#### Step 2: For each sub-task:
-  1. declare a new function in the `"Helper Functions"` section with a name that describes the sub-task. Note: it is likely that it may not need any parameters
-  2. identify all code for performing the sub-task and copy-paste it into the new helper function
+#### Step 2: For each concern:
+  1. declare a new function in the `"Helper Functions"` section with a name that describes the concern.
+  2. identify all code related to that concern and copy-paste it into the new helper function
   3. replace the old code with a call to your new helper function
   
 #### Challenge: Can any repeated code be made more abstract/modular?
