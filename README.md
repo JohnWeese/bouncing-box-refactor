@@ -65,13 +65,13 @@ And then replace the code in `calcualteWage` with a call to this helper function
 ```js
 function calculateWage(overtime) { 
   if (overtime < 5) {
-	  return pay(overtime, 15);
+    return pay(overtime, 15);
   }
   else if (overtime < 10) {
-	  return pay(overtime, 20);
+    return pay(overtime, 20);
   }
   else {
-	  return pay(overtime, 25);
+    return pay(overtime, 25);
   }
 }
 
