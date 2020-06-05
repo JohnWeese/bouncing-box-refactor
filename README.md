@@ -249,10 +249,10 @@ function handleBoxClick() {
 ## TODO 6) Refactor `update` for separation of concerns
 
 The `update` function will be called every 50 milliseconds (20 times per second) and is responsible for drawing each new frame of the animation:
-1. change the box's position
-2. Redraw the box in the new position
-3. Check to see if the box has moved beyond the left or right boundary
-4. If it has, change the direction of the box by multiplying the speed by -1.  
+- change the box's position
+- Redraw the box in the new position
+- Check to see if the box has moved beyond the left or right boundary
+- If it has, change the direction of the box by multiplying the speed by -1.  
 
 **Now, refactor the `update` function by doing the following:**
 1. Use comments to show the high-level concerns of the `update` function
