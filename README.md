@@ -202,7 +202,7 @@ function handleBoxClick() {
   if (speedX >= 0) {
     speedX += 3;
   } 
-  else {
+  else if (speedX < 0) {
     speedX -= 3;
   }
   positionX = 0;
@@ -228,7 +228,7 @@ function handleBoxClick() {
   if (speedX >= 0) {
     speedX += 3;
   } 
-  else {
+  else if (speedX < 0) {
     speedX -= 3;
   }
   
