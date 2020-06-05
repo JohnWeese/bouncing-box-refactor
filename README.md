@@ -6,8 +6,8 @@
   - [TODO 2) Refactor the file structure](#todo-2-refactor-the-file-structure)
   - [TODO 3) Reflection](#todo-3-reflection)
   - [TODO 4) Refactor index.js comment headers](#todo-4-refactor-indexjs-comment-headers)
-  - [TODO 5) Refactor update for separation of concerns](#todo-5-refactor-update-for-separation-of-concerns)
-  - [TODO 6) Refactor handleBoxClick for separation of concerns](#todo-6-refactor-handleboxclick-for-separation-of-concerns)
+  - [TODO 5) Refactor handleBoxClick for separation of concerns](#todo-5-refactor-handleboxclick-for-separation-of-concerns)
+  - [TODO 6) Refactor update for separation of concerns](#todo-6-refactor-update-for-separation-of-concerns)
   - [TODO 7) Reflection](#todo-7-reflection)
 
 
@@ -191,24 +191,68 @@ $(document).ready(function() {
 #### Step 3: Copy the comment header and add a third comment header at the bottom: `"Helper Functions"`
 #### Step 4: Move any code that is not below the correct header (hint: variable declarations should all be in `"Initialization"`)
 
-## TODO 5) Refactor `update` for separation of concerns
+## TODO 5) Refactor `handleBoxClick` for separation of concerns
 
-In this step we will create our first helper functions for the function `update`. Each helper function will implement a separate "concern" of the `update` function. See above for an example.
+We need to first identify the separate concerns of `handleBoxClick`. Then we can create helper functions to handle those concerns individually. Consider the existing code for `handleBoxClick`:
 
-_NOTE: All new functions should be declared in the `Helper Functions` section_
+```js
+function handleBoxClick() {
+  points += 1;
+  $('#box').text(points);
+  if (speedX >= 0) {
+    speedX += 3;
+  } 
+  else {
+    speedX -= 3;
+  }
+  positionX = 0;
+}
+```
 
-#### Step 1: Identify the main concerns of the `update` function.
+When the box gets clicked, the following high-level "concerns" need to be dealt with: 
+- increase the score and update the number on the box
+- increase the speed
+- reset the position of the box
 
-#### Step 2: For each concern:
+**Can you see which statements of this function relate to each of these concerns?**
+
+By adding comments, it will become clearer:
+
+```js
+function handleBoxClick() {
+  // increase points
+  points += 1;            
+  $('#box').text(points); 
+  
+  // increase speed
+  if (speedX >= 0) {
+    speedX += 3;
+  } 
+  else {
+    speedX -= 3;
+  }
+  
+  // reset the position of the box
+  positionX = 0;  
+}
+```
+
+**Now, for each concern we will create a helper function by following these three steps:**
   1. declare a new function in the `"Helper Functions"` section with a name that describes the concern.
   2. identify all code related to that concern and copy-paste it into the new helper function
   3. replace the old code with a call to your new helper function
   
-#### Challenge: Can any repeated code be made more abstract/modular?
+**In the end, the `handleBoxClick` function should only make calls to helper functions. It should not directly implement any of the code itself**.
 
-## TODO 6) Refactor `handleBoxClick` for separation of concerns
+## TODO 6) Refactor `update` for separation of concerns
 
-Follow the steps outlined above in TODO 5 for `handleBoxClick`
+The `update` function will be called every 50 milliseconds (20 times per second) and is responsible for redrawing the box in a new position. In addition, on each frame, the `update` function needs to check to see if the box has moved beyond the left or right boundary. If it has, it will change the direction of the box by multiplying the speed by -1.  
+
+**Now, refactor the `update` function by doing the following:**
+1. Use comments to describe the high-level concerns of the `update` function
+2. declare a new function in the `"Helper Functions"` section with a name that describes the concern.
+3. identify all code related to that concern and copy-paste it into the new helper function
+4. replace the old code with a call to your new helper function
 
 ## TODO 7) Reflection:
 Inside the `reflections.txt` file answer the following questions:
