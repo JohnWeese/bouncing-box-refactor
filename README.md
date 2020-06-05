@@ -193,7 +193,14 @@ $(document).ready(function() {
 
 ## TODO 5) Refactor `handleBoxClick` for separation of concerns
 
-We need to first identify the separate concerns of `handleBoxClick`. Then we can create helper functions to handle those concerns individually. Consider the existing code for `handleBoxClick`:
+We need to first identify the separate concerns of `handleBoxClick`. Then we can create helper functions to handle those concerns individually. 
+
+When the box gets clicked, the following high-level "concerns" need to be dealt with: 
+- increase the score and update the number on the box
+- increase the speed
+- reset the position of the box
+
+Consider the existing code for `handleBoxClick`, :
 
 ```js
 function handleBoxClick() {
@@ -208,11 +215,6 @@ function handleBoxClick() {
   positionX = 0;
 }
 ```
-
-When the box gets clicked, the following high-level "concerns" need to be dealt with: 
-- increase the score and update the number on the box
-- increase the speed
-- reset the position of the box
 
 **Can you see which statements of this function relate to each of these concerns?**
 
