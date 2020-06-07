@@ -9,6 +9,7 @@
   - [TODO 5) Refactor handleBoxClick for separation of concerns](#todo-5-refactor-handleboxclick-for-separation-of-concerns)
   - [TODO 6) Refactor update for separation of concerns](#todo-6-refactor-update-for-separation-of-concerns)
   - [TODO 7) Reflection](#todo-7-reflection)
+  - [Extra Challenges](#extra-challenges)
 
 
 # Overview
@@ -265,4 +266,21 @@ Inside the `reflections.txt` file answer the following questions:
 - In your opinion, what are the pros of refactoring your HTML, CSS, and JavaScript into separate files? What are the cons?
 - In your opinion, what are the pros of refactoring your JavaScript code into separate functions? What are the cons?
 
+## Extra Challenges:
 
+Below are some additional ideas to extend this project:
+
+1) Make the box move vertically AND horizontally and bounce off the top and bottom walls. You will need to calculate a `BOARD_HEIGHT` value which you can do by getting the height of the `window`:
+
+```js
+var BOARD_HEIGHT = $(window).height();
+```
+
+2) Every time you click on the box, change it's background color. You can generate a random color using the logic below:
+
+```js
+var r = Math.floor(Math.random() * 255);
+var g = Math.floor(Math.random() * 255);
+var b = Math.floor(Math.random() * 255);
+var rgbString = "rgb(" + r + "," + g + "," + b + ")";
+```
