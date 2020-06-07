@@ -268,7 +268,7 @@ Inside the `reflections.txt` file answer the following questions:
 
 ## Extra Challenges:
 
-Below are some additional ideas to extend this project:
+Below are some additional ideas to extend this project. For each extra challenge, make sure to maintain Separation of Concerns by creating helper functions!
 
 1) Make the box move vertically AND horizontally and bounce off the top and bottom walls. You will need to calculate a `BOARD_HEIGHT` value which you can do by getting the height of the `window`:
 
