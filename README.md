@@ -1,3 +1,7 @@
+In this project we will be *refactoring* a project from the Fundamentals of Software Development: Bouncing Box!
+
+![Gameplay gif](https://github.com/OperationSpark/bouncing-box/blob/master/images/bouncing-box.gif?raw=true)
+
 **Table of Contents**
 - [Overview](#overview)
 - [Separation of Concerns Example](#separation-of-concerns-example)
