@@ -112,11 +112,11 @@ With these changes, the "core logic" function `runProgram` is much more readable
 
 Right click on the main folder in your workspace and create a new folder with the name: `bouncing-box-refactor`
 
-<img src="https://github.com/OperationSpark/bouncing-box-refactor/blob/master/img/new-folder.png?raw=true" height="250">
+<img src="https://github.com/OperationSpark/bouncing-box-refactor/blob/master/img/new-folder.png?raw=true" height="400">
 
 Right click on this new folder and create 3 files in that folder: `index.html`, `index.css`, `index.js`
 
-<img src="https://github.com/OperationSpark/bouncing-box-refactor/blob/master/img/new-file.png?raw=true" height="250">
+<img src="https://github.com/OperationSpark/bouncing-box-refactor/blob/master/img/new-file.png?raw=true" height="400">
 
 At this point your file structure should look like this:
 
