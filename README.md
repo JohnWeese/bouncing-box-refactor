@@ -32,67 +32,75 @@ The first goal of this project is to restructure this project such that HTML, CS
 
 The second goal is to then refactor the JavaScript code such that the core logic of the program can be broken up into smaller pieces and implemented using **Helper Functions**.
 
-> A helper function is a function that performs part of the computation of another function. Helper functions are used to make your programs easier to read by giving descriptive names to computations. They also let you reuse computations, just as with functions in general.
+> A helper function is a function that performs part of the computation of another function. Helper functions are used to make your programs easier to read by hiding away complexity and by giving descriptive names to computations. 
 
 # Separation of Concerns Example
 
-The function below determines the pay for an employee that earns $10/hour with the opportunity to earn overtime. The overtime rate increases as the number of overtime hours goes up: $15/hour for 1-4 hours of overtime, $20/hour for 5-9 hours, and $25/hour for more than 10 hours of overtime.
+The program below below determines the pay for an employee that earns $10/hour with the opportunity to earn overtime. The overtime rate is $25 per overtime hour if the employee worked more than 10 overtime hours, $20 per overtime hour if the employee worked more than 5 overtime hours, or $15 per overtime hour if the employee worked between 0 and 5 hours of overtime.
 
 ```js
-function calculateWage(overtime) { 
-  if (overtime < 5) {
-    return (10 * 40) + (overtime * 15);
+function runProgram() {
+
+  var overtime = prompt("# of overtime hours");
+  
+  var rate;  
+  if (overtime > 10) {
+    rate = 25;
   }
-  else if (overtime < 10) {
-    return (10 * 40) + (overtime * 20);
+  else if (overtime > 5) {
+    rate = 20;
   }
   else {
-    return (10 * 40) + (overtime * 25);
+    rate = 15;
   }
-} 
-console.log(calculateWage(1)); //=> 415
-console.log(calculateWage(5)); //=> 500
-console.log(calculateWage(10)); //=> 750
+	
+  var pay = (10 * 40) + (overtime * rate);
+
+  alert("You made $" + pay);
+
+}
 ```
 
-In this function, there are two main concerns: 
-1. determine the range of overtime hours
-2. calculate the pay based on the rate for the identified range. 
+To achieve separation of concerns within a single JavaScript program, we can follow these two simple steps:
+1. Break down the program and identify the concerns of the program
+2. Convert each concern into a helper function.
 
-We can separate these two concerns by adding in a helper function that calculates the pay based on the specified overtime rate:
+The concerns of the program really depend on how the programmer views them. I see 4 main concerns:
+1. Asking the user for the number of `overtime` hours worked:
+2. Determining the `rate` for each overtime hour based on the number of overtime hours worked 
+3. Calculating the `pay` rate based on the number of `overtime` hours worked and the overtime `rate`
+4. Alert the `pay` to the user.
+
+Concerns 1 and 4 are already are handled by the built-in helper functions `prompt` and `alert`. Concerns 2 and 3 can be converted into helper functions like so:
 
 ```js
-function pay(overtime, rate) {
+// Core Logic
+function runProgram() {
+  var overtime = prompt("# of overtime hours");
+  var rate = getOvertimeRate(overtime);
+  var pay = calculatePay(overtime, rate);
+  alert("You made $" + pay);
+}
+
+// Helper Functions
+function getOvertimeRate(overtime) {
+  if (overtime > 10) {
+    return 25; 
+  }
+  else if (overtime > 5) {
+    return 20; 
+  }
+  else {
+    return 15; 
+  }
+}
+
+function calculatePay(overtime, rate) {
   return (10 * 40) + (overtime * rate);
 }
 ```
 
-And then replace the code in `calcualteWage` with a call to this helper function.
-
-```js
-function calculateWage(overtime) { 
-  if (overtime < 5) {
-    return pay(overtime, 15);
-  }
-  else if (overtime < 10) {
-    return pay(overtime, 20);
-  }
-  else {
-    return pay(overtime, 25);
-  }
-}
-
-// helper function
-function pay(overtime, rate) {
-  return (10 * 40) + (overtime * rate);
-}
-
-console.log(calculateWage(1)); //=> 415
-console.log(calculateWage(5)); //=> 500
-console.log(calculateWage(10)); //=> 750
-```
-
-The result is a more readable program (because the helper function has a descriprtive name) and improves the organization of our code. If an error were to exist in the program, it would be easier to identify. Lastly, if we needed to change something such as the base pay from $10/hour to $12/hour, we would only have to update the `pay` function in one place rather than in three.
+With these changes, the "core logic" function `runProgram` is much more readable and the complexity of each step is hidden away. In addition, if an error were to exist in the program, it would be easier to identify because our code is more organized and the stack trace would provide a more detailed trail towards the issue.
 
 # TODOs
 
