@@ -201,10 +201,17 @@ $(document).ready(function() {
 });
 ```
 
-#### Step 1: Rename the first comment header: `"Initialization"`
-#### Step 2: Rename the second comment header: `"Core Logic"`
-#### Step 3: Copy the comment header and add a third comment header at the bottom: `"Helper Functions"`
-#### Step 4: Move any code that is not below the correct header (hint: variable declarations should all be in `"Initialization"`)
+At the top of your program, you should see one example header created for you.
+
+#### Step 1: Rename the first comment header to: `SETUP`
+#### Step 2: Copy the comment header and add a second comment header below with the text: `CORE LOGIC`
+#### Step 3: Copy the comment header and add a second comment header below with the text: `HELPER FUNCTIONS`
+#### Step 4: Move any code that is not below the correct header (see below)
+
+- Variable declarations should all be under `SETUP`
+- The function calls `setInterval(update, 50)` and `$("#box").on("click", handleBoxClick)` should be under `SETUP`
+- The functions `update` and `handleBoxClick` should be under `CORE LOGIC`
+- The `HELPER FUNCTIONS` section will be empty (for now)
 
 ## TODO 5) Refactor `handleBoxClick` for separation of concerns
 
