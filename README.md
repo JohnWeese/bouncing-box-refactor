@@ -205,7 +205,7 @@ At the top of your program, you should see one example header created for you.
 
 #### Step 1: Rename the first comment header to: `SETUP`
 #### Step 2: Copy the comment header and add a second comment header below with the text: `CORE LOGIC`
-#### Step 3: Copy the comment header and add a second comment header below with the text: `HELPER FUNCTIONS`
+#### Step 3: Copy the comment header and add a third comment header below with the text: `HELPER FUNCTIONS`
 #### Step 4: Move any code that is not below the correct header (see below)
 
 - Variable declarations should all be under `SETUP`
