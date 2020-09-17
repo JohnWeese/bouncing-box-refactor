@@ -137,7 +137,7 @@ Copy and paste the CSS within the `<style>` tags from `index.html` to `index.css
 Hint: the code you are copy-pasting should look like the code below:
 
 ```css
-.box {
+#box {
   /* css for the box... */
 }
 ```
